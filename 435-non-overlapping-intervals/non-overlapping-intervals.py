@@ -1,0 +1,26 @@
+class Solution:
+    def eraseOverlapIntervals(self, intervals):
+        intervals.sort(key=lambda x: x[1])
+        n = len(intervals)
+
+        prev = 0
+        count = 1  # keep first interval
+
+        for i in range(1, n):
+            if intervals[i][0] >= intervals[prev][1]:
+                count += 1
+                prev = i
+        # else: overlap → skip this interval (no update to count)
+
+        return n - count
+
+        # this is good question what a video to solve this everytym to understand the concept
+    
+    
+       
+    
+
+
+
+
+        
