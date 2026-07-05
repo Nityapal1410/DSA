@@ -6,30 +6,31 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        p1 = headA
-        p2 = headB
-        
-        c = 0
+        lenA , lenB =0,0
+        currA , currB =headA , headB
+        while currA:
+            lenA +=1
+            currA = currA.next
 
-        while True:
-            if p1==p2:
-                return p1
+        while currB:
+            lenB +=1
+            currB = currB.next
 
-            p1 = p1.next
-            p2 = p2.next
+        currA, currB = headA , headB
+        if lenA > lenB:
+            for _ in range(lenA- lenB):
+                currA = currA.next
+        else:
+            for _ in range(lenB- lenA):
+                currB = currB.next
 
-            if p2 ==None:
-                c+=1
-                p2 =headA
+        while currA and currB:
+            if currA == currB:
+                return currA
 
-            if p1 == None:
-                p1 =headB
+            currA = currA.next
+            currB =currB.next
 
-            if c>1:
-                return None
-
-        
-
-
+        return None
 
         
